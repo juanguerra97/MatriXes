@@ -21,6 +21,7 @@ public class PanelMatrix extends JPanel {
 	private JButton btnSeleccionOperacion[];// arreglo con los botones para seleccionar una operación
 	private CardLayout layoutMatrix;// layout del panel
 	private JPanel pnlVistaOperaciones;// panel con cardlayout que muestra la interfaz apropiada de acuerdo a la operación que quiera realizar el usuario
+	private BaseInterfazOperacion operacionesGUI[];// GUI de cada operación
 	// termina declaración de variables
 	
 	// constructor
@@ -41,8 +42,15 @@ public class PanelMatrix extends JPanel {
 		
 		add(toolBar, BorderLayout.NORTH);// el toolbar se coloca en la parte superior del panel principal
 		
+		operacionesGUI = new BaseInterfazOperacion[OPERACIONES.length];// inicializa arreglo con GUI´s
+		operacionesGUI[0] = new InterfazSuma();
+		operacionesGUI[1] = new InterfazResta();
+		
 		layoutMatrix = new CardLayout();
 		pnlVistaOperaciones = new JPanel(layoutMatrix);// panel con el cardlayout para cambiar entre distintas interfaces graficas
+		
+		for(int i = 0; i < 2; ++i)
+			pnlVistaOperaciones.add(operacionesGUI[i], OPERACIONES[i]);
 		
 		add(pnlVistaOperaciones, BorderLayout.CENTER);// el panel con el cardlayout se coloca en el centro
 		
@@ -66,6 +74,7 @@ public class PanelMatrix extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent ev) {
 			layoutMatrix.show(pnlVistaOperaciones, OPERACIONES[operacion]);// cambia el panel que se esta mostrando
+			operacionesGUI[operacion].restablecer();
 		}
 		
 	}// termina clase interna CambiarPanel
