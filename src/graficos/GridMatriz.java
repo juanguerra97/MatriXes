@@ -1,5 +1,8 @@
 package graficos;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -22,6 +25,7 @@ public class GridMatriz extends JPanel {
 			for(int c = 0; c < 4; ++c){	//	columnas
 				fieldsMatriz[f][c] = new JTextField(8);// inicialización del campo de texto
 				fieldsMatriz[f][c].setHorizontalAlignment(SwingConstants.RIGHT);// alinea el texto de los campos a la derecha
+				GridMatriz.setEventoTeclado(fieldsMatriz[f][c]);// establece el evento de teclado del campo de texto
 			}
 		setDimensiones(filas, columnas);// llamada a la funcion que establece las dimensiones
 	}// termina el constructor
@@ -48,6 +52,25 @@ public class GridMatriz extends JPanel {
 				else
 					fieldsMatriz[f][c].setEditable(false);
 			}
+	}
+	
+	// método para agregar un evento de teclado a un campo de tecto
+	private static void setEventoTeclado(JTextField f){
+		f.addKeyListener(new KeyAdapter(){
+			@Override
+			public void keyPressed(KeyEvent key) {
+				char k = key.getKeyChar();
+				if(k == '.'){
+					String textField = f.getText();
+					for(int i = 0; i < textField.length(); ++i)
+						if(textField.charAt(i) == k){
+							key.consume();
+							break;
+						}
+				}else if(!Character.isDigit(k))
+					key.consume();
+			}
+		});
 	}
 	
 }
