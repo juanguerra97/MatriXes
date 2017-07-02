@@ -1,6 +1,5 @@
 package graficos;
 
-import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -31,9 +30,7 @@ public abstract class BaseInterfazSumaResta extends BaseInterfazOperacion{
 
 	@Override
 	protected void construirPanelArriba() {
-		pnlArriba = new JPanel(new BorderLayout());
-		
-		JPanel pnlGrids = new JPanel(new GridBagLayout());
+		pnlArriba = new JPanel(new GridBagLayout());
 		
 		GridBagConstraints c = new GridBagConstraints();
 		c.gridx = 0;
@@ -44,7 +41,7 @@ public abstract class BaseInterfazSumaResta extends BaseInterfazOperacion{
 		
 		c.gridwidth = 4;	
 		c.weightx = 1.0;
-		pnlGrids.add(gridMatriz1, c);		
+		pnlArriba.add(gridMatriz1, c);		
 		
 		JPanel pnlCentro = new JPanel(new GridLayout(3, 1,0,5));
 		pnlCentro.add(comboFilas1);
@@ -54,14 +51,12 @@ public abstract class BaseInterfazSumaResta extends BaseInterfazOperacion{
 		c.gridx+=4;
 		c.gridwidth = 1;
 		c.weightx = 0.0;
-		pnlGrids.add(pnlCentro, c);
+		pnlArriba.add(pnlCentro, c);
 		
 		c.gridx++;
 		c.weightx = 1.0;
 		c.gridwidth = 4;
-		pnlGrids.add(gridMatriz2, c);
-		
-		pnlArriba.add(pnlGrids, BorderLayout.CENTER);
+		pnlArriba.add(gridMatriz2, c);
 		
 	}
 	
