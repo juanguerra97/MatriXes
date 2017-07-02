@@ -58,6 +58,13 @@ public class GridMatriz extends JPanel {
 		}
 	}
 	
+	// método que borra el texto de todos los campos de texto
+	public void borrarTextoFields(){
+		for(int f = 0; f < 4; ++f)
+			for(int c = 0; c < 4; ++c)
+				fieldsMatriz[f][c].setText("");
+	}
+	
 	// método para establecer las dimensiones de la matriz que se esta mostrando/ingresando
 	public void setDimensiones(int filas, int columnas){
 		if(filas > 0 && filas <= 4)
