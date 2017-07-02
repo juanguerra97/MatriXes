@@ -37,5 +37,16 @@ public class Matriz {
 				matriz[f][c]*=escalar;
 		return matriz;
 	}
+	
+	// método para obtener la transpuesta de una matriz
+	public static double[][] transpuesta(double[][] matriz){
+		int filas = matriz.length;
+		int columnas = matriz[0].length;
+		double matrizTranspuesta[][] = new double[columnas][filas];
+		for(int f = 0; f < filas; ++f)	//	filas
+			for(int c = 0; c < columnas; ++c)	//	columnas
+				matrizTranspuesta[c][f] = matriz[f][c];
+		return matrizTranspuesta;
+	}
 		
 }
