@@ -35,6 +35,20 @@ public class GridMatriz extends JPanel {
 		construirInterfaz();// se construye la interfaz grafica
 	}// termina el constructor
 	
+	// método que devuelve un arreglo con los valores de la matriz
+	public double[][] getMatriz(){
+		double[][] matriz = new double[filas][columnas];// inicializa el arreglo
+		for(int f = 0; f < filas; ++f)	//	filas
+			for(int c = 0; c < columnas; ++c){	//	columnas
+				try{
+					matriz[f][c] = Double.parseDouble(fieldsMatriz[f][c].getText());
+				}catch(NumberFormatException ex){// la excepcion se lanza cuando el usuario no ingresó nada en el field por lo tanto se asume como cero
+					matriz[f][c] = 0.0;
+				}
+			}
+		return matriz;
+	}
+	
 	// método para establecer las dimensiones de la matriz que se esta mostrando/ingresando
 	public void setDimensiones(int filas, int columnas){
 		if(filas > 0 && filas <= 4)
