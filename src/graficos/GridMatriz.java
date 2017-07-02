@@ -1,8 +1,12 @@
 package graficos;
 
+import java.awt.BorderLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -28,6 +32,7 @@ public class GridMatriz extends JPanel {
 				GridMatriz.setEventoTeclado(fieldsMatriz[f][c]);// establece el evento de teclado del campo de texto
 			}
 		setDimensiones(filas, columnas);// llamada a la funcion que establece las dimensiones
+		construirInterfaz();// se construye la interfaz grafica
 	}// termina el constructor
 	
 	// método para establecer las dimensiones de la matriz que se esta mostrando/ingresando
@@ -71,6 +76,35 @@ public class GridMatriz extends JPanel {
 					key.consume();
 			}
 		});
+	}
+	
+	// método que construye la interfaz
+	private void construirInterfaz(){
+		setLayout(new BorderLayout());// layout del panel principal
+		
+		JPanel pnlLblFilas = new JPanel(new GridLayout(4,1));// contenedor de los labels que indican el numero de fila
+		JPanel pnlLblColumnas = new JPanel(new GridLayout(1,4));// contenedor de los labels que indican el numero de columna
+		
+		JLabel lblFilas[] = {new JLabel("1", JLabel.CENTER), new JLabel("2", JLabel.CENTER), new JLabel("3", JLabel.CENTER), new JLabel("4", JLabel.CENTER)};// indicadores de numero de fila
+		JLabel lblColumnas[] = {new JLabel("1", JLabel.CENTER), new JLabel("2", JLabel.CENTER), new JLabel("3", JLabel.CENTER), new JLabel("4", JLabel.CENTER)};// indicadores de numero de columna
+		Font fuenteLbl = new Font("", Font.PLAIN, 8);
+		for(int i = 0; i < 4; ++i){
+			lblFilas[i].setFont(fuenteLbl);
+			lblColumnas[i].setFont(fuenteLbl);
+			pnlLblFilas.add(lblFilas[i]);
+			pnlLblColumnas.add(lblColumnas[i]);
+		}
+		
+		add(pnlLblFilas, BorderLayout.WEST);// agrega los labels de filas en el lado izquierdo
+		add(pnlLblColumnas, BorderLayout.NORTH);// agrega los labels de columnas en la parte superior
+		
+		JPanel pnlGridFields = new JPanel(new GridLayout(4,4));// panel que muestra una grilla con los campos de texto
+		for(int f = 0; f < 4; ++f)	//	filas
+			for(int c = 0; c < 4; ++c)	//	columnas
+				pnlGridFields.add(fieldsMatriz[f][c]);// agrega el field al panel
+		
+		add(pnlGridFields, BorderLayout.CENTER);// agrega la grilla con los campos de texto en el centro del panel principal
+		
 	}
 	
 }
