@@ -9,6 +9,8 @@ import java.awt.event.ItemListener;
 
 import javax.swing.JPanel;
 
+import matrixes.Matriz;
+
 public class InterfazMultiplicacionEscalar extends BaseInterfazOperacion {
 
 	private static final long serialVersionUID = 1L;
@@ -60,7 +62,9 @@ pnlArriba = new JPanel(new GridBagLayout());
 	public void hacerOperacion() {
 		double[][] matriz = gridMatriz1.getMatriz();
 		double[][] escalar = fieldEscalar.getMatriz();
-		double resultado;
+		double producto[][] = Matriz.multiplicar(matriz, escalar[0][0]);
+		gridMatrizResultado.setDimensiones(producto.length, producto[0].length);
+		gridMatrizResultado.setMatriz(producto);
 	}
 	
 	@Override
