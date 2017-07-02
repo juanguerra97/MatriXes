@@ -1,7 +1,6 @@
 package graficos;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -10,7 +9,6 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 import javax.swing.JPanel;
-import javax.swing.JToolBar;
 
 // clase que sirve de base para las interfaces de las operaciones de suma y resta
 public abstract class BaseInterfazSumaResta extends BaseInterfazOperacion{
