@@ -93,12 +93,12 @@ public class GridMatriz extends JPanel {
 	private static void setEventoTeclado(JTextField f){
 		f.addKeyListener(new KeyAdapter(){
 			@Override
-			public void keyPressed(KeyEvent key) {
+			public void keyTyped(KeyEvent key) {
 				char k = key.getKeyChar();
 				if(k == '.'){
 					String textField = f.getText();
 					for(int i = 0; i < textField.length(); ++i)
-						if(textField.charAt(i) == k){
+						if(textField.charAt(i) == '.'){
 							key.consume();
 							break;
 						}
