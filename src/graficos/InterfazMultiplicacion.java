@@ -9,6 +9,8 @@ import java.awt.event.ItemListener;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
+import matrixes.Matriz;
+
 public class InterfazMultiplicacion extends BaseInterfazOperacion {
 
 	private static final long serialVersionUID = 1L;
@@ -72,7 +74,9 @@ public class InterfazMultiplicacion extends BaseInterfazOperacion {
 	public void hacerOperacion() {
 		double[][] matriz1 = gridMatriz1.getMatriz();
 		double[][] matriz2 = gridMatriz2.getMatriz();
-		double[][] resultado;
+		double[][] resultado = Matriz.multiplicar(matriz1, matriz2);
+		gridMatrizResultado.setDimensiones(resultado.length, resultado[0].length);
+		gridMatrizResultado.setMatriz(resultado);
 	}
 	
 	@Override
