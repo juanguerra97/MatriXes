@@ -1,0 +1,92 @@
+package graficos;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import java.awt.Insets;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+
+import javax.swing.JPanel;
+import javax.swing.JToolBar;
+
+// clase que sirve de base para las interfaces de las operaciones de suma y resta
+public abstract class BaseInterfazSumaResta extends BaseInterfazOperacion{
+
+	private static final long serialVersionUID = 1L;
+	protected GridMatriz gridMatriz2;// para ingresar los datos de la segunda matriz
+
+	public BaseInterfazSumaResta(String operacion) {
+		super(operacion);
+		gridMatriz2 = new GridMatriz(3,3);
+		comboFilas1.setSelectedIndex(2);
+		comboColumnas1.setSelectedIndex(2);
+		ItemListener eventoItem = new CambioDimension();
+		comboFilas1.addItemListener(eventoItem);
+		comboColumnas1.addItemListener(eventoItem);
+		construirPanelArriba();
+		add(pnlArriba);
+		add(pnlAbajo);
+	}
+
+	@Override
+	protected void construirPanelArriba() {
+		pnlArriba = new JPanel(new BorderLayout());
+		
+		JPanel pnlGrids = new JPanel(new GridBagLayout());
+		
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridx = 0;
+		c.gridy = 0;
+		c.insets = new Insets(5,10,5,10);
+		c.gridheight = 1;
+		c.fill = GridBagConstraints.BOTH;
+		
+		c.gridwidth = 4;	
+		c.weightx = 1.0;
+		pnlGrids.add(gridMatriz1, c);		
+		
+		JPanel pnlCentro = new JPanel(new GridLayout(3, 1,0,5));
+		pnlCentro.add(comboFilas1);
+		pnlCentro.add(comboColumnas1);
+		pnlCentro.add(btnOperar);
+		
+		c.gridx+=4;
+		c.gridwidth = 1;
+		c.weightx = 0.0;
+		pnlGrids.add(pnlCentro, c);
+		
+		c.gridx++;
+		c.weightx = 1.0;
+		c.gridwidth = 4;
+		pnlGrids.add(gridMatriz2, c);
+		
+		pnlArriba.add(pnlGrids, BorderLayout.CENTER);
+		
+	}
+	
+	@Override
+	public void restablecer(){
+		super.restablecer();
+		gridMatriz2.borrarTextoFields();
+	}
+
+	@Override
+	public abstract void hacerOperacion();
+	
+	// evento de los combo box
+	private class CambioDimension implements ItemListener{
+		@Override
+		public void itemStateChanged(ItemEvent i) {
+			int filas = comboFilas1.getSelectedIndex() + 1;
+			int columnas = comboColumnas1.getSelectedIndex() + 1;
+			// en la suma y la resta las dos matrices deben tener las mismas dimensiones
+			gridMatriz1.setDimensiones(filas, columnas);
+			gridMatriz2.setDimensiones(filas, columnas);
+			restablecer();
+		}		
+	}// termina clase interna CambioDimension
+
+}
