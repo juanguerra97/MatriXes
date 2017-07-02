@@ -36,6 +36,18 @@ public class GridMatriz extends JPanel {
 			this.columnas = columnas;
 		else
 			this.columnas = 3;
+		setFieldsEnable();// se establece qué campos son editables
+	}
+	
+	// método que establece en cuáles campos de texto se puede introducir texto y en cuáles no de acuerdo con las dimensiones de la matriz
+	private void setFieldsEnable(){
+		for(int f = 0; f < 4; ++f)	//	filas
+			for(int c = 0; c <4; ++c){	//	columnas
+				if(f < filas && c < columnas)
+					fieldsMatriz[f][c].setEditable(true);
+				else
+					fieldsMatriz[f][c].setEditable(false);
+			}
 	}
 	
 }
