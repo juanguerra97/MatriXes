@@ -18,8 +18,6 @@ public abstract class BaseInterfazSumaResta extends BaseInterfazOperacion{
 	public BaseInterfazSumaResta(String operacion) {
 		super(operacion);
 		gridMatriz2 = new GridMatriz(3,3);
-		comboFilas1.setSelectedIndex(2);
-		comboColumnas1.setSelectedIndex(2);
 		ItemListener eventoItem = new CambioDimension();
 		comboFilas1.addItemListener(eventoItem);
 		comboColumnas1.addItemListener(eventoItem);

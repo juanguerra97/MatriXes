@@ -23,6 +23,8 @@ public class InterfazMultiplicacion extends BaseInterfazOperacion {
 		gridMatriz2 = new GridMatriz(3,3);
 		comboFilas2 = new JComboBox<String>(FILAS);
 		comboColumnas2 = new JComboBox<String>(COLUMNAS);
+		comboFilas2.setSelectedIndex(2);
+		comboColumnas2.setSelectedIndex(2);
 		eventoCombo = new CambioDimension();
 		comboFilas1.addItemListener(eventoCombo);
 		comboColumnas1.addItemListener(eventoCombo);

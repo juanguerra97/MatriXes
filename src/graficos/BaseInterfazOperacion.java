@@ -36,6 +36,8 @@ public abstract class BaseInterfazOperacion extends JPanel {
 		gridMatrizResultado = new GridMatriz(0,0);
 		comboFilas1 = new JComboBox<String>(FILAS);
 		comboColumnas1 = new JComboBox<String>(COLUMNAS);
+		comboFilas1.setSelectedIndex(2);
+		comboColumnas1.setSelectedIndex(2);
 		Action evento = new Operar(operacion);
 		btnOperar = new JButton(evento);
 		construirPanelAbajo();
