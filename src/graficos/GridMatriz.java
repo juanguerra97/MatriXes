@@ -67,11 +67,11 @@ public class GridMatriz extends JPanel {
 	
 	// método para establecer las dimensiones de la matriz que se esta mostrando/ingresando
 	public void setDimensiones(int filas, int columnas){
-		if(filas > 0 && filas <= 4)
+		if(filas >= 0 && filas <= 4)
 			this.filas = filas;
 		else
 			this.filas = 3;
-		if(columnas > 0 && columnas <= 4)
+		if(columnas >= 0 && columnas <= 4)
 			this.columnas = columnas;
 		else
 			this.columnas = 3;
