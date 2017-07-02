@@ -46,16 +46,14 @@ public class PanelMatrix extends JPanel {
 		operacionesGUI[0] = new InterfazSuma();
 		operacionesGUI[1] = new InterfazResta();
 		operacionesGUI[2] = new InterfazMultiplicacion();
+		operacionesGUI[3] = new InterfazMultiplicacionEscalar();
 		operacionesGUI[4] = new InterfazTranspuesta();
 		
 		layoutMatrix = new CardLayout();
 		pnlVistaOperaciones = new JPanel(layoutMatrix);// panel con el cardlayout para cambiar entre distintas interfaces graficas
 		
-		for(int i = 0; i < 2; ++i)
+		for(int i = 0; i < OPERACIONES.length; ++i)
 			pnlVistaOperaciones.add(operacionesGUI[i], OPERACIONES[i]);
-		
-		pnlVistaOperaciones.add(operacionesGUI[2], OPERACIONES[2]);
-		pnlVistaOperaciones.add(operacionesGUI[4], OPERACIONES[4]);
 		
 		add(pnlVistaOperaciones, BorderLayout.CENTER);// el panel con el cardlayout se coloca en el centro
 		
