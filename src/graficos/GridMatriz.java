@@ -49,6 +49,15 @@ public class GridMatriz extends JPanel {
 		return matriz;
 	}
 	
+	// método para establecer los valores de los campos de texto
+	public void setMatriz(double[][] matriz){
+		if(matriz.length == filas && matriz[0].length == columnas){// comprueba que las dimensiones sean válidas
+			for(int f = 0; f < filas; ++f)	//	filas
+				for(int c = 0; c < columnas; ++c)	//	columnas
+					fieldsMatriz[f][c].setText("" + matriz[f][c]);
+		}
+	}
+	
 	// método para establecer las dimensiones de la matriz que se esta mostrando/ingresando
 	public void setDimensiones(int filas, int columnas){
 		if(filas > 0 && filas <= 4)
