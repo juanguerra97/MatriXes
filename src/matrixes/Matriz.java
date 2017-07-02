@@ -29,5 +29,13 @@ public class Matriz {
 		}
 		return diferencia;
 	}
+	
+	// método que multiplica una matriz por un valor escalar
+	public static double[][] multiplicar(double[][] matriz, double escalar){
+		for(int f = 0; f < matriz.length; ++f)	//	filas
+			for(int c = 0; c < matriz[0].length; ++c)	//	columnas
+				matriz[f][c]*=escalar;
+		return matriz;
+	}
 		
 }
