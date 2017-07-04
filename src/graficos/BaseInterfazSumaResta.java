@@ -34,11 +34,12 @@ public abstract class BaseInterfazSumaResta extends BaseInterfazOperacion{
 		c.gridx = 0;
 		c.gridy = 0;
 		c.insets = new Insets(5,10,5,10);
-		c.gridheight = 1;
+		c.gridheight = 3;
 		c.fill = GridBagConstraints.BOTH;
 		
 		c.gridwidth = 4;	
 		c.weightx = 1.0;
+		c.ipady = 35;
 		pnlArriba.add(gridMatriz1, c);		
 		
 		JPanel pnlCentro = new JPanel(new GridLayout(3, 1,0,5));
@@ -47,13 +48,19 @@ public abstract class BaseInterfazSumaResta extends BaseInterfazOperacion{
 		pnlCentro.add(btnOperar);
 		
 		c.gridx+=4;
+		c.gridy++;
 		c.gridwidth = 1;
 		c.weightx = 0.0;
+		c.ipady = 0;
+		c.gridheight = 1;
 		pnlArriba.add(pnlCentro, c);
 		
 		c.gridx++;
+		c.gridy = 0;
 		c.weightx = 1.0;
 		c.gridwidth = 4;
+		c.ipady = 35;
+		c.gridheight = 3;
 		pnlArriba.add(gridMatriz2, c);
 		
 	}
