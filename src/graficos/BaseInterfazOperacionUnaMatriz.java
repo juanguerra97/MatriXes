@@ -34,11 +34,15 @@ public abstract class BaseInterfazOperacionUnaMatriz extends BaseInterfazOperaci
 		c.gridx = 0;
 		c.gridy = 0;
 		c.insets = new Insets(5,10,5,10);
+		c.ipady = 50;
+		c.gridheight = 3;
 		
 		pnlArriba.add(gridMatriz1, c);
 		
 		c.gridx++;
-		
+		c.gridy++;
+		c.ipady = 25;
+		c.gridheight = 1;
 		JPanel pnlCentro = new JPanel(new GridLayout(3,1,0,5));
 		pnlCentro.add(comboFilas1);
 		pnlCentro.add(comboColumnas1);
