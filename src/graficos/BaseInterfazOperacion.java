@@ -73,6 +73,8 @@ public abstract class BaseInterfazOperacion extends JPanel {
 		c.insets = new Insets(5, 50, 15, 50);
 		c.gridwidth = 1;
 		c.gridheight = 3;
+		c.ipadx = 200;
+		c.ipady = 45;
 		pnlAbajo.add(gridMatrizResultado, c);
 		
 	}
