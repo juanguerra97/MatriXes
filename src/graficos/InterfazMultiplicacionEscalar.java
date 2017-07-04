@@ -35,8 +35,9 @@ pnlArriba = new JPanel(new GridBagLayout());
 		c.gridx = 0;
 		c.gridy = 0;
 		c.insets = new Insets(5,10,5,10);
-		c.gridheight = 1;
+		c.gridheight = 3;
 		c.fill = GridBagConstraints.BOTH;
+		c.ipady = 35;
 		
 		c.gridwidth = 4;	
 		c.weightx = 1.0;
@@ -48,13 +49,19 @@ pnlArriba = new JPanel(new GridBagLayout());
 		pnlCentro.add(btnOperar);
 		
 		c.gridx+=4;
+		c.gridy++;
 		c.gridwidth = 1;
 		c.weightx = 0.0;
+		c.ipady = 18;
+		c.gridheight = 1;
 		pnlArriba.add(pnlCentro, c);
 		
 		c.gridx++;
+		c.gridy = 0;
 		c.weightx = 1.0;
+		c.gridheight = 3;
 		c.gridwidth = 4;
+		c.ipady = 35;
 		pnlArriba.add(fieldEscalar, c);
 	}
 
